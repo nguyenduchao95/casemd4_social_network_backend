@@ -1,27 +1,24 @@
 package com.case_social_network.controller;
-
-import com.case_social_network.entity.Like;
-import com.case_social_network.entity.Post;
 import com.case_social_network.entity.User;
 import com.case_social_network.service.ILikeService;
 import com.case_social_network.service.IPostService;
 import com.case_social_network.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/posts")
+@RequestMapping("/likes")
 public class LikeController {
     @Autowired
     private IPostService postService;
 
     @Autowired
     private ILikeService likeService;
+
+    @Autowired
     private IUserService userService;
 
 
@@ -31,11 +28,18 @@ public class LikeController {
     }
 
 
-    // Lấy danh sách người dùng đã "like" bài viết
     @GetMapping("/{postId}/liked-users")
-    public void getLikedUsers(@PathVariable Long postId) {
+    public List<User> getLikedUsers(@PathVariable Long postId) {
         List<Long> likedUserIds = likeService.findUserIdsByPostId(postId);
-        System.out.println(likedUserIds);
+        List<User> likedUsers = new ArrayList<>();
 
+        for (Long userId : likedUserIds) {
+            User user = userService.findById(userId);
+            if (user != null) {
+                likedUsers.add(user);
+            }
+        }
+
+        return likedUsers;
     }
 }

@@ -14,7 +14,6 @@ public class LikeService implements ILikeService {
 
     @Override
     public List<Long> findUserIdsByPostId(Long postId) {
-        // Sử dụng LikeRepository để lấy danh sách userId đã like bài viết dựa trên postId
         return likeRepo.findUserIdsByPostId(postId);
     }
 

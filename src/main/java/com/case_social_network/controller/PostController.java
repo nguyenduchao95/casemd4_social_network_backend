@@ -1,5 +1,4 @@
 package com.case_social_network.controller;
-
 import com.case_social_network.entity.Post;
 import com.case_social_network.service.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/{userId}")
+@RequestMapping("/posts")
 public class PostController {
     @Autowired
     IPostService postService;
 
-    @GetMapping
+
+    @GetMapping("/{userId}")
     public List<Post> getPostsFromFollowers(@PathVariable Long userId) {
         return postService.getAllByFollow(userId);
     }
+ @GetMapping
+ public List<Post> showAll() {
+     return postService.getAll();
+ }
 
     @PostMapping
     public Post save(@RequestBody Post post) {
