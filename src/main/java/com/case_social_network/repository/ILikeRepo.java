@@ -2,12 +2,18 @@ package com.case_social_network.repository;
 
 import com.case_social_network.entity.Like;
 import com.case_social_network.entity.Post;
+
+import com.case_social_network.entity.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface ILikeRepo extends CrudRepository<Like,Long> {
-    @Query("SELECT l FROM Like l WHERE l.id IN (SELECT p.id FROM Post p WHERE l.id = ?1)")
-    List<Like> getAllByPost(Long postId);
+
+    Long countByPost(Post post);
+    List<Like> findByPost(Post post);
+    @Query("SELECT l.user.id FROM Like l WHERE l.post.id = :postId")
+    List<Long> findUserIdsByPostId(@Param("postId") Long postId);
 }

@@ -1,6 +1,7 @@
 package com.case_social_network.service.impl;
 
 import com.case_social_network.entity.Like;
+import com.case_social_network.entity.Post;
 import com.case_social_network.repository.ILikeRepo;
 import com.case_social_network.service.ILikeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,33 +11,20 @@ import java.util.List;
 public class LikeService implements ILikeService {
     @Autowired
     ILikeRepo likeRepo;
+
     @Override
-    public List<Like> getAll() {
-        return (List<Like>) likeRepo.findAll();
+    public List<Long> findUserIdsByPostId(Long postId) {
+        // Sử dụng LikeRepository để lấy danh sách userId đã like bài viết dựa trên postId
+        return likeRepo.findUserIdsByPostId(postId);
     }
 
     @Override
-    public Like save(Like like) {
-        return likeRepo.save(like);
+    public Long countByPostId(Post post) {
+        return likeRepo.countByPost(post);
     }
 
     @Override
-    public void delete(long id) {
-        likeRepo.deleteById(id);
-    }
-
-    @Override
-    public Like findById(long id) {
-        return null;
-    }
-
-    @Override
-    public List<Like> findByStr(String name) {
-        return null;
-    }
-
-    @Override
-    public List<Like> getAllByPost(long postId) {
-        return likeRepo.getAllByPost(postId);
+    public List<Like> getAllByPost(Post post) {
+        return likeRepo.findByPost(post);
     }
 }
