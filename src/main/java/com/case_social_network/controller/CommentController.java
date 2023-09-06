@@ -28,22 +28,12 @@ public class CommentController {
 
     public List<Comment> showAllCommentsForPost(@PathVariable Long postId) {
         Post post = postService.findById(postId);
-
-        if (post == null) {
-            System.out.println("chưa có bình luận");
-        }
-
         return commentService.findAllByPost(post);
     }
 
     @PostMapping
     public Comment createCommentForPost(@PathVariable Long postId, @RequestBody Comment comment) {
         Post post = postService.findById(postId);
-
-        if (post == null) {
-            System.out.println("null");
-        }
-
         comment.setPost(post);
         return commentService.save(comment);
     }
@@ -51,21 +41,10 @@ public class CommentController {
     @GetMapping("/{commentId}")
     public Comment getCommentById(@PathVariable Long postId, @PathVariable Long commentId) {
         Comment comment = commentService.findById(commentId);
-
-        if (comment == null || !(comment.getPost().getId() ==(postId))) {
-            System.out.println("null");
-        }
-
         return comment;
     }
-    @GetMapping("/delete{commentId}")
+    @GetMapping("/delete/{commentId}")
     public ResponseEntity<?> deleteComment(@PathVariable Long postId, @PathVariable Long commentId) {
-        Comment comment = commentService.findById(commentId);
-
-        if (comment == null || !(comment.getPost().getId() == (postId))) {
-            System.out.println("null");
-        }
-
         commentService.delete(commentId);
         return new ResponseEntity<>(HttpStatus.OK);
     }

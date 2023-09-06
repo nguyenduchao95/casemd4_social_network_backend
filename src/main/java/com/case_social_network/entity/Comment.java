@@ -1,10 +1,7 @@
 package com.case_social_network.entity;
-
 import lombok.Data;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
-
 @Entity
 @Data
 @Table(name = "comments")

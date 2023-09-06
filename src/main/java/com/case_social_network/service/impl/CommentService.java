@@ -38,10 +38,7 @@ public class CommentService implements ICommentService {
         return null;
     }
 
-    @Override
-    public List<Long> findUserIdsByPostId(Long postId) {
-        return commentRepo.findUserIdsByPostId(postId);
-    }
+
 
     @Override
     public List<Comment> findAllByPost(Post post) {
