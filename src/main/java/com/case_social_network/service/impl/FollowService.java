@@ -1,5 +1,4 @@
 package com.case_social_network.service.impl;
-
 import com.case_social_network.entity.Follow;
 import com.case_social_network.entity.User;
 import com.case_social_network.repository.IFollowRepo;
@@ -14,9 +13,15 @@ public class FollowService implements IFollowService {
     @Autowired
     IFollowRepo followRepo;
 
+
+    @Override
+    public List<User> findUsersFollowingUserId(Long userId) {
+        return followRepo.findUsersFollowingUserId(userId);
+    }
+
     @Override
     public List<Follow> getAll() {
-        return (List<Follow>) followRepo.findAll();
+        return null;
     }
 
     @Override
@@ -26,27 +31,16 @@ public class FollowService implements IFollowService {
 
     @Override
     public void delete(long id) {
-        followRepo.deleteById(id);
+
     }
 
     @Override
     public Follow findById(long id) {
-        return followRepo.findById(id).get();
+        return null;
     }
 
     @Override
     public List<Follow> findByStr(String name) {
-        return null;
-    }
-
-    @Override
-    public List<Follow> getAllForUser() {
-        return null;
-    }
-
-    @Override
-    public List<Follow> getAllForUser(User user) {
-//        return followRepo.findAllByFollower_user(user);
         return null;
     }
 }

@@ -2,7 +2,6 @@ package com.case_social_network.service.impl;
 
 import com.case_social_network.entity.Like;
 import com.case_social_network.entity.Post;
-import com.case_social_network.entity.User;
 import com.case_social_network.repository.ILikeRepo;
 import com.case_social_network.service.ILikeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,19 @@ public class LikeService implements ILikeService {
     public List<Long> findUserIdsByPostId(Long postId) {
         return likeRepo.findUserIdsByPostId(postId);
     }
+    public List<Like> getAll(){
+        return (List<Like>) likeRepo.findAll();
+    }
+
+    @Override
+    public Like getLike(Long postId, Long userId) {
+        return likeRepo.getLike(postId , userId);
+    }
+
+    @Override
+    public Like findLikeByPostIdAndUserId(long postId, long userId) {
+        return likeRepo.findByPostIdAndUserId(postId , userId);
+    }
 
     @Override
     public Like save(Like like) {
@@ -24,8 +36,9 @@ public class LikeService implements ILikeService {
     }
 
     @Override
-    public void delete(Long id) {
-        likeRepo.deleteById(id);
+    public Like delete(Like like) {
+        likeRepo.delete(like);
+        return null;
     }
 
     @Override

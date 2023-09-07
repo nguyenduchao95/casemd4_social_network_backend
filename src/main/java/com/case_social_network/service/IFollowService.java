@@ -6,7 +6,7 @@ import com.case_social_network.entity.User;
 import java.util.List;
 
 public interface IFollowService extends IService<Follow>{
-    List<Follow> getAllForUser();
 
-    List<Follow> getAllForUser(User user);
+    List<User> findUsersFollowingUserId(Long userId);
+
 }
