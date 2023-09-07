@@ -18,6 +18,16 @@ public class LikeService implements ILikeService {
     }
 
     @Override
+    public Like save(Like like) {
+        return likeRepo.save(like);
+    }
+
+    @Override
+    public void delete(Long id) {
+        likeRepo.deleteById(id);
+    }
+
+    @Override
     public Long countByPostId(Post post) {
         return likeRepo.countByPost(post);
     }

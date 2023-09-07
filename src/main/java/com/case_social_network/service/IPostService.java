@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IPostService extends IService<Post> {
 
-    List<Post> getAllByFollow(long id);
+    List<Post> getAllByFollow(Long id);
 }

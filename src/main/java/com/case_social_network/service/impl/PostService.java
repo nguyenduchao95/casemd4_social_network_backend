@@ -36,7 +36,7 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public List<Post> getAllByFollow(long id) {
+    public List<Post> getAllByFollow(Long id) {
         return postRepo.getAllByFollow(id);
     }
 }

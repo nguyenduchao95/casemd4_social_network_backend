@@ -1,6 +1,7 @@
 package com.case_social_network.service.impl;
 
 import com.case_social_network.entity.Follow;
+import com.case_social_network.entity.User;
 import com.case_social_network.repository.IFollowRepo;
 import com.case_social_network.service.IFollowService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,15 @@ public class FollowService implements IFollowService {
     @Override
     public List<Follow> findByStr(String name) {
         return null;
+    }
+
+    @Override
+    public List<Follow> getAllForUser() {
+        return null;
+    }
+
+    @Override
+    public List<Follow> getAllForUser(User user) {
+        return followRepo.findAllByFollower_user(user);
     }
 }

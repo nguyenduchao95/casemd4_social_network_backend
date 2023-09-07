@@ -36,7 +36,7 @@ public class CommentController {
     }
 
     @GetMapping("/{commentId}")
-    public Comment getCommentById(@PathVariable Long commentId, @PathVariable String postId) {
+    public Comment edit(@PathVariable Long commentId, @PathVariable String postId) {
         return commentService.findById(commentId);
     }
     @GetMapping("/delete/{commentId}")

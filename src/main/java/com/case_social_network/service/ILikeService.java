@@ -8,5 +8,7 @@ import java.util.List;
 public interface ILikeService {
     Long countByPostId(Post post);
     List<Long> findUserIdsByPostId(Long postId);
-    List<Like> getAllByPost(Post post);
+    Like save(Like like);
+    void delete(Long id);
+
 }
