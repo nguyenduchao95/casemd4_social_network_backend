@@ -22,13 +22,13 @@ public class LikeController {
     private IUserService userService;
 
 
-    @GetMapping("/{postId}/like-count")
+    @GetMapping("/{postId}/count")
     public Long getLikeCount(@PathVariable Long postId) {
         return  likeService.countByPostId(postService.findById(postId));
     }
 
 
-    @GetMapping("/{postId}/liked-users")
+    @GetMapping("/{postId}/users")
     public List<User> getLikedUsers(@PathVariable Long postId) {
         List<Long> likedUserIds = likeService.findUserIdsByPostId(postId);
         List<User> likedUsers = new ArrayList<>();
