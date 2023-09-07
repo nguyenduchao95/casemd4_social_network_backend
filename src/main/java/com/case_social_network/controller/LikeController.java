@@ -33,16 +33,6 @@ public class LikeController {
         return likeService.countByPostId(postService.findById(postId));
     }
 
-//    @DeleteMapping("/{postId}/{userId}")
-//    public ResponseEntity<?> deleteLike(@PathVariable long postId, @PathVariable long userId) {
-//
-//        try {
-//            likeService.deleteByPostIdAndUserId(postId, userId);
-//            return new ResponseEntity<>("Like deleted successfully", HttpStatus.OK);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>("An error occurred: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
 
 
     @PostMapping("/{postId}/{userId}")
@@ -50,19 +40,30 @@ public class LikeController {
         Post post = postService.findById(postId);
         User user = userService.findById(userId);
 
-        Like newLike = new Like(user , post);
+        Like newLike = new Like(user, post);
 
-        Like like = likeService.findLikeByPostIdAndUserId(postId , userId);
+        Like like = likeService.findLikeByPostIdAndUserId(postId, userId);
 
-            if (like != null) {
-                likeService.delete(like);
-            } else {
-                likeService.save(newLike);
-            }
+        if (like != null) {
+            likeService.delete(like);
+        } else {
+            likeService.save(newLike);
+        }
 
         return like;
     }
 
+    @GetMapping("/{postId}/{userId}")
+    public Like checkLike(@PathVariable Long postId, @PathVariable Long userId) {
+
+        Like like = likeService.findLikeByPostIdAndUserId(postId, userId);
+
+        if (like != null) {
+            return like;
+        }
+        return new Like();
+
+    }
 
     @GetMapping("/{postId}/users")
     public List<User> getLikedUsers(@PathVariable Long postId) {

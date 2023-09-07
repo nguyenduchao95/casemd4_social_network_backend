@@ -21,11 +21,6 @@ public class LikeService implements ILikeService {
     }
 
     @Override
-    public Like getLike(Long postId, Long userId) {
-        return likeRepo.getLike(postId , userId);
-    }
-
-    @Override
     public Like findLikeByPostIdAndUserId(long postId, long userId) {
         return likeRepo.findByPostIdAndUserId(postId , userId);
     }

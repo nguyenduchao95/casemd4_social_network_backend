@@ -12,7 +12,5 @@ public interface ILikeService {
 
     List<Like> getAll();
 
-    Like getLike(Long postId , Long userId);
-
     Like findLikeByPostIdAndUserId(long postId, long userId);
 }
