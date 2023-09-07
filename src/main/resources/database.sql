@@ -28,8 +28,13 @@ VALUES (1, 8, 'https://images.saymedia-content.com/.image/ar_1:1%2Cc_fill%2Ccs_s
        (3, 6, 'https://images.statusfacebook.com/profile_pictures/cartoon_girls/cartoon_girls_profile_picture80.jpg', 'my fisrt web app', '2021-11-27 19:15:08'),
        (5, 8, 'https://s.cafebazaar.ir/images/upload/screenshot/com.laknaidriapps.girlscartoon-27aed6e0-bc93-4548-84bd-eba47379c42d.jpeg', 'say hii to everyone', '2021-11-27 19:19:34'),
        (7, 6, 'https://i.pinimg.com/564x/fb/f7/ae/fbf7aedc29a9ec97a88204eb59551a4d.jpg', 'cartoon_girls', '2021-11-30 03:44:23'),
-       (9, 10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfx3i8dM0DYcbtesCCVwhRZu0H1ERrJ6dEPvkJ4rW5poNESXixPv1MYpARB3ITppmi5M&usqp=CAU', 'cool profile picture', '2021-12-02 18:19:59');
-
+       (9, 10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfx3i8dM0DYcbtesCCVwhRZu0H1ERrJ6dEPvkJ4rW5poNESXixPv1MYpARB3ITppmi5M&usqp=CAU', 'cool profile picture', '2021-12-02 18:19:59'),
+       (10, 9, 'https://images.saymedia-content.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cq_auto:eco%2Cw_1200/MTk4MDQzMTI5NzY3NTM1ODA2/short-captions-for-profile-pictures.png', 'this is my first image post', '2021-11-27 18:54:22'),
+       (11, 10, 'https://wallpapers.com/images/hd/aesthetic-profile-picture-52t290ggbex44jma.jpg', 'Hình ảnh có thể có bản quyền', '2021-11-27 19:07:49'),
+       (12, 11, 'https://images.statusfacebook.com/profile_pictures/cartoon_girls/cartoon_girls_profile_picture80.jpg', 'my fisrt web app', '2021-11-27 19:15:08'),
+       (13, 9, 'https://s.cafebazaar.ir/images/upload/screenshot/com.laknaidriapps.girlscartoon-27aed6e0-bc93-4548-84bd-eba47379c42d.jpeg', 'say hii to everyone', '2021-11-27 19:19:34'),
+       (14, 10, 'https://i.pinimg.com/564x/fb/f7/ae/fbf7aedc29a9ec97a88204eb59551a4d.jpg', 'cartoon_girls', '2021-11-30 03:44:23'),
+       (15, 11, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfx3i8dM0DYcbtesCCVwhRZu0H1ERrJ6dEPvkJ4rW5poNESXixPv1MYpARB3ITppmi5M&usqp=CAU', 'cool profile picture', '2021-12-02 18:19:59');
 
 
 INSERT INTO `comments` (`id`, `post_id`, `user_id`, `comment`, `created_at`)

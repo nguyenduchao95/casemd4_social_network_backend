@@ -33,7 +33,7 @@ public class LikeController {
 //    }
 
 
-    @GetMapping("/{postId}/liked-users")
+    @GetMapping("/{postId}/users")
     public List<User> getLikedUsers(@PathVariable Long postId) {
         List<Long> likedUserIds = likeService.findUserIdsByPostId(postId);
         List<User> likedUsers = new ArrayList<>();

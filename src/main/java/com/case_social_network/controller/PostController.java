@@ -18,7 +18,7 @@ public class PostController {
 
 
     @GetMapping("/{userId}")
-    public List<Post> getPostsFromFollowers(@PathVariable Long userId) {
+    public List<Post> getPostsFromFollowers(@PathVariable long userId) {
         return postService.getAllByFollow(userId);
     }
 
@@ -37,7 +37,7 @@ public class PostController {
         return postService.findById(id);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
         postService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
