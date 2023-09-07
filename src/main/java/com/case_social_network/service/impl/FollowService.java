@@ -46,6 +46,7 @@ public class FollowService implements IFollowService {
 
     @Override
     public List<Follow> getAllForUser(User user) {
-        return followRepo.findAllByFollower_user(user);
+//        return followRepo.findAllByFollower_user(user);
+        return null;
     }
 }

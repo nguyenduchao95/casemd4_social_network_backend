@@ -2,6 +2,7 @@ package com.case_social_network.service.impl;
 
 import com.case_social_network.entity.Like;
 import com.case_social_network.entity.Post;
+import com.case_social_network.entity.User;
 import com.case_social_network.repository.ILikeRepo;
 import com.case_social_network.service.ILikeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,16 @@ public class LikeService implements ILikeService {
     }
 
     @Override
+    public void deleteByPostIdAndUserId(long postId, long userId) {
+        likeRepo.deleteByPostIdAndUserId(postId,userId);
+    }
+
+
+
+    @Override
     public Long countByPostId(Post post) {
         return likeRepo.countByPost(post);
     }
 
-    @Override
-    public List<Like> getAllByPost(Post post) {
-        return likeRepo.findByPost(post);
-    }
+
 }
