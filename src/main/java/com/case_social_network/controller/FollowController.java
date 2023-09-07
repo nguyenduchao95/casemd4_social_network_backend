@@ -33,10 +33,10 @@ public class FollowController {
         User user = userService.findById(userId);
         User userFl = userService.findById(userFlId);
 
-        Follow existingFollow = followService.checkFollowed(user, userFl);
+        Follow follow = followService.checkFollowed(user, userFl);
 
-        if (existingFollow != null) {
-            followService.delete(existingFollow);
+        if (follow != null) {
+            followService.delete(follow);
             return null;
         } else {
             Follow newFollow = new Follow(user, userFl);
@@ -45,5 +45,8 @@ public class FollowController {
         }
 
     }
+
+
+
 }
 

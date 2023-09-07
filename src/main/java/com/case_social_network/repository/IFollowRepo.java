@@ -1,6 +1,5 @@
 package com.case_social_network.repository;
 import com.case_social_network.entity.Follow;
-import com.case_social_network.entity.Like;
 import com.case_social_network.entity.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
