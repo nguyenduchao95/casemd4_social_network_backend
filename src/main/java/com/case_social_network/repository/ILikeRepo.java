@@ -20,6 +20,8 @@ public interface ILikeRepo extends CrudRepository<Like,Long> {
     @Override
     void delete(Like like);
 
-    
+    @Query(nativeQuery = true, value="SELECT * from likes l where l.post_id = :postId and l.user_id = :userId")
+    Like getLike(@Param("postId") long postId, @Param("userId") long userId);
+
     Like findByPostIdAndUserId(long postId, long userId);
 }

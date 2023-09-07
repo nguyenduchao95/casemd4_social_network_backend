@@ -1,6 +1,8 @@
 package com.case_social_network.controller;
 
 import com.case_social_network.entity.Follow;
+import com.case_social_network.entity.Like;
+import com.case_social_network.entity.Post;
 import com.case_social_network.entity.User;
 import com.case_social_network.service.IFollowService;
 import com.case_social_network.service.IUserService;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/{userId}/follows")
+@RequestMapping("/follows/{userId}")
 public class FollowController {
     @Autowired
     IFollowService followService;
@@ -23,15 +25,25 @@ public class FollowController {
 
     @GetMapping
     public List<User> showAll(@PathVariable Long userId) {
-        return followService.findUsersFollowingUserId(userId);
+        return followService.listUserFollowed(userId);
     }
-    @PostMapping
-    public Follow addFollow( @RequestBody Follow follow, @PathVariable Long userId) {
+    @PostMapping("/{userFlId}")
+    public Follow saveLike(@PathVariable Long userId, @PathVariable Long userFlId) {
+
         User user = userService.findById(userId);
-        follow.setFollower_user(user);
-        return followService.save(follow);
+        User userFl = userService.findById(userFlId);
+
+        Follow existingFollow = followService.checkFollowed(user, userFl);
+
+        if (existingFollow != null) {
+            followService.delete(existingFollow);
+            return null;
+        } else {
+            Follow newFollow = new Follow(user, userFl);
+            followService.save(newFollow);
+            return newFollow;
+        }
+
     }
-
-
 }
 

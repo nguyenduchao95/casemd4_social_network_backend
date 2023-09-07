@@ -16,9 +16,6 @@ public class LikeService implements ILikeService {
     public List<Long> findUserIdsByPostId(Long postId) {
         return likeRepo.findUserIdsByPostId(postId);
     }
-    public List<Like> getAll(){
-        return (List<Like>) likeRepo.findAll();
-    }
 
     @Override
     public Like findLikeByPostIdAndUserId(long postId, long userId) {
@@ -35,13 +32,6 @@ public class LikeService implements ILikeService {
         likeRepo.delete(like);
         return null;
     }
-
-    @Override
-    public void deleteByPostIdAndUserId(long postId, long userId) {
-        likeRepo.deleteByPostIdAndUserId(postId,userId);
-    }
-
-
 
     @Override
     public Long countByPostId(Post post) {

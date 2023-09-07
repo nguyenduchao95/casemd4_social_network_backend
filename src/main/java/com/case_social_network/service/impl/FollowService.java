@@ -15,32 +15,29 @@ public class FollowService implements IFollowService {
 
 
     @Override
-    public List<User> findUsersFollowingUserId(Long userId) {
-        return followRepo.findUsersFollowingUserId(userId);
+    public List<User> listUser(Long userFlId) {
+        return followRepo.listUser(userFlId);
     }
 
     @Override
-    public List<Follow> getAll() {
-        return null;
+    public List<User> listUserFollowed(Long userId) {
+        return followRepo.listUserFollowed(userId);
     }
 
-    @Override
+
     public Follow save(Follow follow) {
         return followRepo.save(follow);
     }
 
-    @Override
-    public void delete(long id) {
+
+    public void delete(Follow follow) {
+        followRepo.delete(follow);
 
     }
 
     @Override
-    public Follow findById(long id) {
-        return null;
+    public Follow checkFollowed(User user, User userFl) {
+        return followRepo.checkFollowed(user, userFl);
     }
 
-    @Override
-    public List<Follow> findByStr(String name) {
-        return null;
-    }
 }

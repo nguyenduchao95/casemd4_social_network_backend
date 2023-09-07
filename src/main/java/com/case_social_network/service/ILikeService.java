@@ -8,9 +8,5 @@ public interface ILikeService {
     List<Long> findUserIdsByPostId(Long postId);
     Like save(Like like);
     Like delete(Like like);
-    void deleteByPostIdAndUserId(long postId, long userId);
-
-    List<Like> getAll();
-
     Like findLikeByPostIdAndUserId(long postId, long userId);
 }
