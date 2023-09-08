@@ -3,7 +3,7 @@ package com.case_social_network.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -15,7 +15,7 @@ public class Notification {
     @Column(columnDefinition = "TEXT")
     private String message;
     private boolean read_status;
-    private Timestamp created_at;
+    private LocalDateTime created_at;
     @ManyToOne
     private User from_user;
     @ManyToOne
