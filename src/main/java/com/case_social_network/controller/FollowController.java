@@ -2,6 +2,7 @@ package com.case_social_network.controller;
 
 import com.case_social_network.entity.Follow;
 import com.case_social_network.entity.Like;
+import com.case_social_network.entity.Post;
 import com.case_social_network.entity.User;
 import com.case_social_network.service.IFollowService;
 import com.case_social_network.service.IUserService;
@@ -22,6 +23,7 @@ public class FollowController {
     IFollowService followService;
     @Autowired
     IUserService userService;
+
 
     @GetMapping
     public List<User> listUserFollowed(@PathVariable Long userId) {
@@ -62,5 +64,8 @@ public class FollowController {
     public boolean checkFollowed(@PathVariable Long userId, @PathVariable Long userFlId) {
         return followService.findByUserIdAndFollowerUserId(userId, userFlId) != null;
     }
+
+
+
 }
 
