@@ -27,6 +27,8 @@ public class FollowController {
     public List<User> showAll(@PathVariable Long userId) {
         return followService.listUserFollowed(userId);
     }
+
+
     @PostMapping("/{userFlId}")
     public Follow saveLike(@PathVariable Long userId, @PathVariable Long userFlId) {
 

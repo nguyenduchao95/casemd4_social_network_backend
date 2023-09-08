@@ -21,4 +21,5 @@ public class Post {
     private LocalDateTime created_at;
     @ManyToOne
     private User user;
+
 }

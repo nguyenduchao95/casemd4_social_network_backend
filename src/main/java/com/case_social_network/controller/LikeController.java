@@ -26,14 +26,14 @@ public class LikeController {
 
     @Autowired
     private IUserService userService;
-
+// trả về lượt like
 
     @GetMapping("/{postId}/count")
     public Long getLikeCount(@PathVariable Long postId) {
         return likeService.countByPostId(postService.findById(postId));
     }
 
-
+//like nếu chưa like và bỏ like nếu đã like
 
     @PostMapping("/{postId}/{userId}")
     public Like saveLike(@PathVariable Long postId, @PathVariable Long userId) {
@@ -52,6 +52,7 @@ public class LikeController {
 
         return like;
     }
+    // check xem like bài viết chưa
 
     @GetMapping("/{postId}/{userId}")
     public Like checkLike(@PathVariable Long postId, @PathVariable Long userId) {
@@ -64,7 +65,7 @@ public class LikeController {
         return new Like();
 
     }
-
+// danh sách ngừười likle bài viết
     @GetMapping("/{postId}/users")
     public List<User> getLikedUsers(@PathVariable Long postId) {
         List<Long> likedUserIds = likeService.findUserIdsByPostId(postId);
