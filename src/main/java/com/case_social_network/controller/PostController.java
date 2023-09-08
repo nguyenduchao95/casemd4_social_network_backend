@@ -1,6 +1,8 @@
 package com.case_social_network.controller;
 
 import com.case_social_network.entity.Post;
+import com.case_social_network.service.ICommentService;
+import com.case_social_network.service.ILikeService;
 import com.case_social_network.service.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +16,11 @@ import java.util.List;
 @RequestMapping("/posts")
 public class PostController {
     @Autowired
-    IPostService postService;
+    private IPostService postService;
+    @Autowired
+    private ICommentService commentService;
+    @Autowired
+    private ILikeService likeService;
 
 
     @GetMapping("/{userId}")
@@ -33,12 +39,14 @@ public class PostController {
     }
 
     @PutMapping("/{id}")
-    public Post edit(@PathVariable long id) {
-        return postService.findById(id);
+    public Post edit(@RequestBody Post post) {
+        return postService.save(post);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
+        likeService.deleteAllByPostId(id);
+        commentService.deleteAllByPostId(id);
         postService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

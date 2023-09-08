@@ -9,4 +9,5 @@ public interface ILikeService {
     Like save(Like like);
     Like delete(Like like);
     Like findLikeByPostIdAndUserId(long postId, long userId);
+    void deleteAllByPostId(Long postId);
 }

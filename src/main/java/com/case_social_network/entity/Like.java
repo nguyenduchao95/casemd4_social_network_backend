@@ -1,11 +1,13 @@
 package com.case_social_network.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "likes")
 public class Like {
     @Id
@@ -19,9 +21,6 @@ public class Like {
     public Like(User user, Post post) {
         this.user = user;
         this.post = post;
-    }
-
-    public Like() {
     }
 }
 

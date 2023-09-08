@@ -34,35 +34,31 @@ public class LikeController {
     }
 
 
-
     @PostMapping("/{postId}/{userId}")
-    public Like saveLike(@PathVariable Long postId, @PathVariable Long userId) {
-        Post post = postService.findById(postId);
-        User user = userService.findById(userId);
-
-        Like newLike = new Like(user, post);
-
-        Like like = likeService.findLikeByPostIdAndUserId(postId, userId);
-
-        if (like != null) {
-            likeService.delete(like);
-        } else {
-            likeService.save(newLike);
+    public ResponseEntity<?> saveLike(@PathVariable Long postId, @PathVariable Long userId) {
+        try {;
+            Like like = likeService.findLikeByPostIdAndUserId(postId, userId);
+            if (like != null) {
+                likeService.delete(like);
+            } else {
+                Post post = new Post();
+                post.setId(postId);
+                User user = new User();
+                user.setId(userId);
+                Like newLike = new Like(user, post);
+                likeService.save(newLike);
+            }
+            return ResponseEntity.ok().build();
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).build();
         }
 
-        return like;
     }
 
     @GetMapping("/{postId}/{userId}")
-    public Like checkLike(@PathVariable Long postId, @PathVariable Long userId) {
-
+    public boolean checkLiked(@PathVariable Long postId, @PathVariable Long userId) {
         Like like = likeService.findLikeByPostIdAndUserId(postId, userId);
-
-        if (like != null) {
-            return like;
-        }
-        return new Like();
-
+        return like != null;
     }
 
     @GetMapping("/{postId}/users")

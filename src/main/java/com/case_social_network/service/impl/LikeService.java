@@ -23,6 +23,11 @@ public class LikeService implements ILikeService {
     }
 
     @Override
+    public void deleteAllByPostId(Long postId) {
+        likeRepo.deleteAllByPostId(postId);
+    }
+
+    @Override
     public Like save(Like like) {
         return likeRepo.save(like);
     }

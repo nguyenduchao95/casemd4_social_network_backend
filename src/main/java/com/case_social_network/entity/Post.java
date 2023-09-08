@@ -3,8 +3,6 @@ package com.case_social_network.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

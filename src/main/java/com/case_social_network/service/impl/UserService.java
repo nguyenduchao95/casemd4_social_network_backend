@@ -37,4 +37,18 @@ public class UserService implements IUserService {
     }
 
 
+    @Override
+    public List<User> listUserFollowed(Long userId) {
+        return userRepo.listUserFollowed(userId);
+    }
+
+    @Override
+    public List<User> listUserUnFollowed(Long userFlId) {
+        return userRepo.listUserUnFollowed(userFlId);
+    }
+
+    @Override
+    public List<User> listUserFollowing(Long userId) {
+        return userRepo.listUserFollowing(userId);
+    }
 }

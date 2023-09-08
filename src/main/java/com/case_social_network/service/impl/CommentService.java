@@ -39,9 +39,13 @@ public class CommentService implements ICommentService {
     }
 
 
-
     @Override
     public List<Comment> findAllByPost(Post post) {
         return commentRepo.findAllByPost(post);
+    }
+
+    @Override
+    public void deleteAllByPostId(Long postId) {
+        commentRepo.deleteAllByPostId(postId);
     }
 }
