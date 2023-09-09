@@ -1,4 +1,5 @@
 package com.case_social_network.service.impl;
+
 import com.case_social_network.entity.Post;
 import com.case_social_network.repository.IPostRepo;
 import com.case_social_network.service.IPostService;
@@ -6,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PostService implements IPostService {
     @Autowired
     IPostRepo postRepo;
+
     @Override
     public List<Post> getAll() {
         return (List<Post>) postRepo.findAll();
@@ -32,7 +35,12 @@ public class PostService implements IPostService {
 
     @Override
     public List<Post> findByStr(String content) {
-        return  postRepo.findByContentContains(content);
+        return postRepo.findByContentContains(content);
+    }
+
+    @Override
+    public List<Post> getAllByUserId(Long userId) {
+        return postRepo.getAllByUserId(userId);
     }
 
     @Override
