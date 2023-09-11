@@ -33,6 +33,7 @@ public class FriendController {
         friendService.sendFriend(user1, user2);
     }
 
+// chấp nhận kết bạn
     @PostMapping("/accept/{user1Id}/{user2Id}")
     public void acceptFriendRequest(@PathVariable Long user1Id, @PathVariable Long user2Id) {
         User user1 = new User();
@@ -42,13 +43,14 @@ public class FriendController {
         friendService.acceptFriend(user1, user2);
     }
 
+    // từ chối kết bạn va huy ket ban
     @PostMapping("/decline/{user1Id}/{user2Id}")
-    public void declineFriendRequest(@PathVariable Long user1Id, @PathVariable Long user2Id) {
+    public void declineFriendRequest(@PathVariable Long user1Id, @PathVariable Long user2Id){
         User user1 = new User();
         user1.setId(user1Id);
         User user2 = new User();
         user2.setId(user2Id);
-        friendService.notAcceptFriend(user1, user2);
+        friendService.notAcceptFriendAndUnFriend(user1,user2);
     }
 
 

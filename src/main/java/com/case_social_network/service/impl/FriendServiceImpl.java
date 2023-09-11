@@ -12,36 +12,42 @@ import java.util.List;
 public class FriendServiceImpl {
     @Autowired
     IFriendRepo friendRepo;
-    // nhận được các yêu cầu kết bạn đang chờ xử lý
-    public List<FriendShip> getPendingFriendRequests(User user){
+
+    // Danh sách các yêu cầu kết bạn đang chờ của user 1 xử lý
+    public List<FriendShip> getPendingFriendRequests(User user) {
         return friendRepo.findByUser2AndStatus(user, "pending");
     }
 
     // Gửi kết bạn
-    public void sendFriend(User user1, User user2){
+    public void sendFriend(User user1, User user2) {
         FriendShip friendShip = new FriendShip();
         friendShip.setUser1(user1);
         friendShip.setUser2(user2);
         friendShip.setStatus("Pending");
         friendRepo.save(friendShip);
     }
-// Chấp nhận lời mời kết bạn
-    public void acceptFriend(User user1, User user2){
+
+    // Chấp nhận lời mời kết bạn
+    public void acceptFriend(User user1, User user2) {
         // mối quan hệ kết bạn user 1, user 2
-        FriendShip friendShip = friendRepo.findByUser1AndUser2(user1,user2);
-        if (friendShip != null && friendShip.getStatus().equals("Pending")){
+        FriendShip friendShip = friendRepo.findByUser1AndUser2(user1, user2);
+        if (friendShip != null && friendShip.getStatus().equals("Pending")) {
             friendShip.setStatus("connected");
             friendRepo.save(friendShip);
         }
     }
 
 
-    // Từ chối lời mời kết bạn
-    public void notAcceptFriend (User user1, User user2){
-        FriendShip friendShip = friendRepo.findByUser1AndUser2(user1,user2);
-        if (friendShip != null && friendShip.getStatus().equals("connected")){
+    // Từ chối lời mời kết bạn và huỷ kết bạn
+    public void notAcceptFriendAndUnFriend(User user1, User user2) {
+        FriendShip friendShip = friendRepo.findByUser1AndUser2(user1, user2);
+        if (friendShip != null && friendShip.getStatus().equals("Pending")) {
+            friendRepo.delete(friendShip);
+        } else {
             friendRepo.delete(friendShip);
         }
     }
+
+
 
 }
