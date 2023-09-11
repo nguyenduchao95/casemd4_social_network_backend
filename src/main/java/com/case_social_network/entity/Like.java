@@ -15,5 +15,13 @@ public class Like {
     private User user;
     @ManyToOne
     private Post post;
+
+    public Like(User user, Post post) {
+        this.user = user;
+        this.post = post;
+    }
+
+    public Like() {
+    }
 }
 

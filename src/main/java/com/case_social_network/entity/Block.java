@@ -14,4 +14,9 @@ public class Block {
     private User block_user;
     @ManyToOne
     private User user;
+
+    public Block(User block_user, User user) {
+        this.block_user = block_user;
+        this.user = user;
+    }
 }

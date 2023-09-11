@@ -1,15 +1,19 @@
 package com.case_social_network.service.impl;
 
 import com.case_social_network.entity.User;
+import com.case_social_network.repository.IUserRepo;
 import com.case_social_network.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserService implements IUserService {
+    @Autowired
+    IUserRepo userRepo;
     @Override
     public List<User> getAll() {
-        return null;
+        return (List<User>) userRepo.findAll();
     }
 
     @Override
@@ -24,11 +28,13 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User findById(long id) {
-        return null;
+        return userRepo.findById(id).get();
     }
 
     @Override
     public List<User> findByStr(String name) {
         return null;
     }
+
+
 }

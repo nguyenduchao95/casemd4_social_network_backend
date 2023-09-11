@@ -14,4 +14,12 @@ public class Follow {
     private User follower_user;
     @ManyToOne
     private User user;
+
+    public Follow() {
+    }
+
+    public Follow(User follower_user, User user) {
+        this.follower_user = follower_user;
+        this.user = user;
+    }
 }

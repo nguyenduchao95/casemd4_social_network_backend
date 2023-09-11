@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -20,6 +21,6 @@ public class User {
     private String password;
     @Column(columnDefinition = "TEXT")
     private String image;
-    private Timestamp created_at;
-    private Timestamp updated_at;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 }
