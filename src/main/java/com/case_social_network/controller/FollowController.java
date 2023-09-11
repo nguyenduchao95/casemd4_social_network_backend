@@ -1,8 +1,5 @@
 package com.case_social_network.controller;
 
-import com.case_social_network.entity.Follow;
-import com.case_social_network.entity.Like;
-import com.case_social_network.entity.Post;
 import com.case_social_network.entity.User;
 import com.case_social_network.service.IFollowService;
 import com.case_social_network.service.IUserService;
@@ -20,10 +17,9 @@ import java.util.List;
 @RequestMapping("/follows/{userId}")
 public class FollowController {
     @Autowired
-    IFollowService followService;
+    private IFollowService followService;
     @Autowired
-    IUserService userService;
-
+    private IUserService userService;
 
     @GetMapping
     public List<User> listUserFollowed(@PathVariable Long userId) {
@@ -43,19 +39,9 @@ public class FollowController {
     @PostMapping("/{userFlId}")
     public ResponseEntity<?> saveFollow(@PathVariable Long userId, @PathVariable Long userFlId) {
         try {
-            Follow follow = followService.findByUserIdAndFollowerUserId(userId, userFlId);
-            if (follow != null) {
-                followService.delete(follow);
-            } else {
-                User user = new User();
-                user.setId(userId);
-                User userFl = new User();
-                userFl.setId(userFlId);
-                Follow newFollow = new Follow(user, userFl);
-                followService.save(newFollow);
-            }
+            followService.saveOrDelete(userId, userFlId);
             return ResponseEntity.ok().build();
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).build();
         }
     }
@@ -64,8 +50,5 @@ public class FollowController {
     public boolean checkFollowed(@PathVariable Long userId, @PathVariable Long userFlId) {
         return followService.findByUserIdAndFollowerUserId(userId, userFlId) != null;
     }
-
-
-
 }
 

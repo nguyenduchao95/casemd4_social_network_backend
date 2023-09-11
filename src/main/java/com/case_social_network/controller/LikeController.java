@@ -27,12 +27,10 @@ public class LikeController {
     @Autowired
     private IUserService userService;
 
-
     @GetMapping("/{postId}/count")
     public Long getLikeCount(@PathVariable Long postId) {
         return likeService.countByPostId(postService.findById(postId));
     }
-
 
     @PostMapping("/{postId}/{userId}")
     public ResponseEntity<?> saveLike(@PathVariable Long postId, @PathVariable Long userId) {
