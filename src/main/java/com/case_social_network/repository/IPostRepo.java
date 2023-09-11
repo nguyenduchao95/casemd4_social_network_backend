@@ -12,7 +12,7 @@ public interface IPostRepo extends CrudRepository<Post, Long> {
     @Query("SELECT p FROM Post p WHERE p.user.id = :userId ORDER BY p.created_at DESC")
     List<Post> getAllByUserId(Long userId);
 
-    @Query("SELECT p FROM Post p WHERE p.user.id IN (SELECT f.followerUser.id FROM Follow f WHERE f.user.id = :userId) OR p.user.id = :userId ORDER BY p.created_at DESC")
+    @Query("SELECT p FROM Post p WHERE p.user.id IN (SELECT f.followedUser.id FROM Follow f WHERE f.user.id = :userId) OR p.user.id = :userId ORDER BY p.created_at DESC")
     List<Post> getAllByFollow(@Param("userId") Long userId);
 
     List<Post> findByContentContains(String content);

@@ -13,12 +13,12 @@ public class Follow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
-    private User followerUser;
+    private User followedUser;
     @ManyToOne
     private User user;
 
-    public Follow(User followerUser, User user) {
-        this.followerUser = followerUser;
+    public Follow(User followedUser, User user) {
+        this.followedUser = followedUser;
         this.user = user;
     }
 }

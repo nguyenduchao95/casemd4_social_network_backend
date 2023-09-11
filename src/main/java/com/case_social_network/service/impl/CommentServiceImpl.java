@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CommentService implements ICommentService {
+public class CommentServiceImpl implements ICommentService {
     @Autowired
     ICommentRepo commentRepo;
     @Override

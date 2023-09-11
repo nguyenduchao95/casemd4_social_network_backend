@@ -1,5 +1,3 @@
-
-
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `gender`, `email`, `username`, `password`, `image`,
                      `created_at`, `updated_at`)
 VALUES (3, 'Trịnh', 'Thục', 0, 'whomonugiri2@gmail.com', 'whomonugiri', 'c68710d3fe56fc88f7905cb15f06cf5c',
@@ -79,7 +77,7 @@ VALUES (3, 5, 8, 'this is awesome guys', '2021-12-02 17:44:26'),
        (47, 3, 11, 'Awesosm', '2021-12-07 10:24:33');
 
 
-INSERT INTO `follow` (`id`, `follower_user_id`, `user_id`)
+INSERT INTO `follow` (`id`, `followed_user_id`, `user_id`)
 VALUES (13, 9, 3),
        (15, 9, 6),
        (38, 10, 3),

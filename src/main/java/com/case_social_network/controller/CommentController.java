@@ -10,16 +10,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/cmt/{postId}")
 public class CommentController {
     @Autowired
-    ICommentService commentService;
+    private ICommentService commentService;
 
     @Autowired
-    IPostService postService;
+    private IPostService postService;
 
     @GetMapping
 
@@ -39,7 +38,7 @@ public class CommentController {
     public Comment edit(@PathVariable Long commentId, @PathVariable String postId) {
         return commentService.findById(commentId);
     }
-    @GetMapping("/delete/{commentId}")
+    @DeleteMapping("/{commentId}")
     public ResponseEntity<?> deleteComment(@PathVariable Long commentId, @PathVariable String postId) {
         commentService.delete(commentId);
         return new ResponseEntity<>(HttpStatus.OK);
